@@ -8,7 +8,7 @@ const DetailRow = ({ label, value }) => (
   </div>
 );
 
-// Main weather details display
+// Weather Details Component
 const WeatherDetails = ({ data }) => {
   if (!data) {
     return (
@@ -33,5 +33,6 @@ const WeatherDetails = ({ data }) => {
     </div>
   );
 };
+
 
 export default WeatherDetails;
