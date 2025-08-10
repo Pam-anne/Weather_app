@@ -16,7 +16,7 @@ const Home = () => {
     setError(null);
     
     try {
-      const apiUrl = `https://6vluw9ubyb.execute-api.us-west-2.amazonaws.com/dev/weather?city=${encodeURIComponent(city)}`;
+      const apiUrl = `https://ymv9afmwvl.execute-api.us-west-2.amazonaws.com/dev/weather?city=${encodeURIComponent(city)}`;
       console.log("API URL:", apiUrl); // Debug log
       
       const res = await fetch(apiUrl, {
