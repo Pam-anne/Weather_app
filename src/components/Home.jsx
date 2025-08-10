@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import bgImage from "../assets/bgimage1.jpg";
 import SearchBar from "./SearchBar";
 import WeatherDetails from "./WeatherData.jsx";
@@ -9,6 +9,17 @@ const Home = () => {
   const [location, setLocation] = useState({ city: "", country: "" });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
 
   const fetchWeather = async (city) => {
     console.log("fetchWeather called with:", city); // Debug log
@@ -79,8 +90,8 @@ const Home = () => {
             <p className="text-lg text-gray-300">{location.country}</p>
           </div>
           <div>
-            <p className="text-xl mb-2">{new Date().toDateString()}</p>
-            <p className="text-xl">{new Date().toLocaleTimeString()}</p>
+            <p className="text-xl mb-2">{time.toDateString()}</p>
+            <p className="text-xl">{time.toLocaleTimeString()}</p>
           </div>
           <p className="text-6xl font-bold mt-8">
             {weather?.temperature ? `${weather.temperature}°C` : "--°C"}
